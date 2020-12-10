@@ -36,6 +36,7 @@ class ControllerLogin
                     echo "<a href='?page=registration'>moi nhap lai</a>";
 
                 } else {
+
                     header('location: index.php?page=login');
                 }
             }
@@ -50,17 +51,17 @@ class ControllerLogin
         } else {
             $name = $_REQUEST['username'];
             $pass = $_REQUEST['password'];
-            $login = new MobileLogin($name, $pass);
-            $this->login->inLogin($login);
-            if (isset($name) && isset($pass)){
-                if ($name == '' || $pass == ''){
-                    echo "<a href='?page=login'>moi nhap lai</a>";
+            $login =  $this->login->inLogin($name);
 
-                } else {
+            if (!empty($login) && $login['password'] === $pass){
+                $_SESSION['username'] = $name;
+                $_SESSION['password'] = $pass;
 
-                    header('location: index.php?page=home');
-                }
-            }
+           }
+            header('location: index.php?page=home');
+// else {
+//                echo "moi nhap lai";
+//            }
         }
 
 

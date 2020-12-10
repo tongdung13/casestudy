@@ -9,17 +9,17 @@ class Mobile
     protected $id;
     protected $name;
     protected $price;
-    protected $image;
-    protected $category;
+    protected $img;
+    protected $category_id;
 
 
-    public function __construct($name,$price,$image,$category)
+    public function __construct($name,$price,$img,$category_id)
     {
 
         $this->name = $name;
         $this->price = $price;
-        $this->image = $image;
-        $this->category = $category;
+        $this->img = $img;
+        $this->category_id = $category_id;
 
 
     }
@@ -75,33 +75,33 @@ class Mobile
     /**
      * @return mixed
      */
-    public function getImage()
+    public function getImg()
     {
-        return $this->image;
+        return $this->img;
     }
 
     /**
      * @param mixed $image
      */
-    public function setImage($image)
+    public function setImg($img)
     {
-        $this->image = $image;
+        $this->img = $img;
     }
 
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getCategory_id()
     {
-        return $this->category;
+        return $this->category_id;
     }
 
     /**
      * @param mixed $category
      */
-    public function setCategory($category)
+    public function setCategory_id($category_id)
     {
-        $this->category = $category;
+        $this->category_id = $category_id;
     }
 
 }

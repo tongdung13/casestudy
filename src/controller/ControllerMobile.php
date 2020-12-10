@@ -31,15 +31,17 @@ class ControllerMobile
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
+            $categorys = $this->bigs->categoryAll();
             include_once "src/view/add.php";
         } else {
             $name = $_REQUEST['name'];
             $price = $_REQUEST['price'];
-            $image = $_FILES['image']['name'];
-            $image_tmp = $_FILES['image']['tmp_name'];
+            $image = $_FILES['img']['name'];
+            $image_tmp = $_FILES['img']['tmp_name'];
+            $categoryName = $_REQUEST['categoryName'];
             move_uploaded_file($image_tmp, 'img/'.$image);
-            $category = $_REQUEST['category_id'];
-            $mobiles = new Mobile($name, $price, $image, $category);
+
+            $mobiles = new Mobile($name, $price, $image,$categoryName);
             $this->bigs->addMobile($mobiles);
             header('location: index.php?page=home');
         }
@@ -49,32 +51,32 @@ class ControllerMobile
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET"){
             $id = $_REQUEST['id'];
+            $categorys = $this->bigs->categoryAll();
             $up = $this->bigs->getMobileById($id);
             include_once "src/view/update.php";
         } else {
-            $id = $_REQUEST['id'];
-            $name = $_REQUEST['name'];
+            $id    = $_REQUEST['id'];
+            $name  = $_REQUEST['name'];
             $price = $_REQUEST['price'];
-            $image = $_FILES['image']['name'];
-            $image_tmp = $_FILES['image']['tmp_name'];
+            $image = $_FILES['img']['name'];
+            $image_tmp = $_FILES['img']['tmp_name'];
             move_uploaded_file($image_tmp, 'img/'. $image);
-            $category = $_REQUEST['category'];
-            $newMobile = new Mobile($name, $price, $image, $category);
+            $category_id = $_REQUEST['categoryName'];
+            $newMobile = new Mobile($name, $price, $image,$category_id);
             $newMobile->setId($id);
             $this->bigs->updateMobile($newMobile);
-            header('location: index.php');
+            header('location: index.php?page=home');
         }
     }
 
-    public function delete()
+    public function delete($id)
     {
-        if ($_SERVER["REQUEST_METHOD"] == 'GET') {
-            $id = $_REQUEST['id'];
+        if ($_REQUEST['id']){
             $this->bigs->deleteMobile($id);
-            include "src/view/delete.php";
-        }else {
-            header('location: index.php');
+
         }
+        header('location: index.php?page=home');
+
     }
 
     public function search()

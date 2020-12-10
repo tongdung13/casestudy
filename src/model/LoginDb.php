@@ -16,7 +16,7 @@ class LoginDb
 
     public function getAll()
     {
-        $sql = "select * from registration";
+        $sql = "select * from login";
         $stmt = $this->data->query($sql);
         $stmt->fetchAll();
     }
@@ -25,13 +25,13 @@ class LoginDb
 
     public function addLogin($login)
     {
-        $sql = "INSERT INTO registration (name, password, enterthepassword)
-                VALUES (:name , :password, :enterthepassword)";
+        $sql = "INSERT INTO login (name, password, enterThePassword)
+                VALUES (:name , :password, :enterThePassword)";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':name',            $login->getName());
         $stmt->bindParam(':password',        $login->getPassword());
-        $stmt->bindParam(':enterthepassword',$login->getEnterThePassword());
-        $stmt->fetch();
+        $stmt->bindParam(':enterThePassword',$login->getEnterThePassword());
+        $stmt->execute();
 
     }
 

@@ -9,13 +9,13 @@ class Login
     protected $id;
     protected $name;
     protected $password;
-    protected $enterTheaPassword;
+    protected $enterThePassword;
 
-    public function __construct($name, $password, $enterTheaPassword)
+    public function __construct($name, $password, $enterThePassword)
     {
         $this->name = $name;
         $this->password = $password;
-        $this->enterTheaPassword = $enterTheaPassword;
+        $this->enterThePassword = $enterThePassword;
     }
 
     /**
@@ -71,7 +71,7 @@ class Login
      */
     public function getEnterThePassword()
     {
-        return $this->enterTheaPassword;
+        return $this->enterThePassword;
     }
 
     /**
@@ -79,7 +79,7 @@ class Login
      */
     public function setEnterThePassword($enterThePassword)
     {
-        $this->enterTheaPassword = $enterThePassword;
+        $this->enterThePassword = $enterThePassword;
     }
 
 
