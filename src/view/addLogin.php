@@ -58,15 +58,15 @@
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="">UserName:</label><br>
-                                            <input type="text" name="username"  >
+                                            <input type="text" name="username" placeholder="username" >
                                         </div>
                                         <div class="form-group">
                                             <label for="">Password</label><br>
-                                            <input type="password" name="password" >
+                                            <input type="password" name="password" placeholder="password" >
                                         </div>
                                         <div class="form-group">
                                             <label for="">Enter The Password</label><br>
-                                            <input type="password" name="enterThePassword">
+                                            <input type="password" name="enterThePassword" placeholder="password confirmation">
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Registration" class="btn btn-primary btn-sm">

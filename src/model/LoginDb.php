@@ -16,7 +16,7 @@ class LoginDb
 
     public function getAll()
     {
-        $sql = "select * from login";
+        $sql = "SELECT * FROM login";
         $stmt = $this->data->query($sql);
         $stmt->fetchAll();
     }

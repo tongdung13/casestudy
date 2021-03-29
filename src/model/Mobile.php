@@ -9,99 +9,109 @@ class Mobile
     protected $id;
     protected $name;
     protected $price;
-    protected $img;
+    protected $image;
     protected $category_id;
 
 
-    public function __construct($name,$price,$img,$category_id)
+    public function __construct($name, $price, $image, $category_id)
     {
-
         $this->name = $name;
         $this->price = $price;
-        $this->img = $img;
+        $this->image = $image;
         $this->category_id = $category_id;
-
-
     }
 
+    
+
     /**
-     * @return mixed
-     */
+     * Get the value of id
+     */ 
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param mixed $id
-     */
+     * Set the value of id
+     *
+     * @return  self
+     */ 
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of name
+     */ 
     public function getName()
     {
         return $this->name;
     }
 
     /**
-     * @param mixed $name
-     */
+     * Set the value of name
+     *
+     * @return  self
+     */ 
     public function setName($name)
     {
         $this->name = $name;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of price
+     */ 
     public function getPrice()
     {
         return $this->price;
     }
 
     /**
-     * @param mixed $price
-     */
+     * Set the value of price
+     *
+     * @return  self
+     */ 
     public function setPrice($price)
     {
         $this->price = $price;
     }
 
     /**
-     * @return mixed
-     */
-    public function getImg()
+     * Get the value of image
+     */ 
+    public function getImage()
     {
-        return $this->img;
+        return $this->image;
     }
 
     /**
-     * @param mixed $image
-     */
-    public function setImg($img)
+     * Set the value of image
+     *
+     * @return  self
+     */ 
+    public function setImage($image)
     {
-        $this->img = $img;
+        $this->image = $image;
     }
 
     /**
-     * @return mixed
-     */
+     * Get the value of category_id
+     */ 
     public function getCategory_id()
     {
         return $this->category_id;
     }
 
     /**
-     * @param mixed $category
-     */
+     * Set the value of category_id
+     *
+     * @return  self
+     */ 
     public function setCategory_id($category_id)
     {
         $this->category_id = $category_id;
     }
-
 }

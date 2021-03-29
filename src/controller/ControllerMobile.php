@@ -25,25 +25,24 @@ class ControllerMobile
     public function More()
     {
         $big = $this->bigs->getAll();
-        include "src/view/list.php";
+        include "src/view/admin/list.php";
     }
 
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET" ) {
-            $categorys = $this->bigs->categoryAll();
-            include_once "src/view/add.php";
+            $categories = $this->bigs->categoryAll();
+            include_once "src/view/admin/add.php";
         } else {
             $name = $_REQUEST['name'];
             $price = $_REQUEST['price'];
-            $image = $_FILES['img']['name'];
-            $image_tmp = $_FILES['img']['tmp_name'];
-            $categoryName = $_REQUEST['categoryName'];
+            $image = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $category_id = $_REQUEST['category_id'];
             move_uploaded_file($image_tmp, 'img/'.$image);
-
-            $mobiles = new Mobile($name, $price, $image,$categoryName);
+            $mobiles = new Mobile($name, $price, $image, $category_id);;
             $this->bigs->addMobile($mobiles);
-            header('location: index.php?page=home');
+            header('location: index.php?page=list');
         }
     }
 
@@ -51,21 +50,21 @@ class ControllerMobile
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET"){
             $id = $_REQUEST['id'];
-            $categorys = $this->bigs->categoryAll();
+            $categories = $this->bigs->categoryAll();
             $up = $this->bigs->getMobileById($id);
-            include_once "src/view/update.php";
+            include_once "src/view/admin/update.php";
         } else {
             $id    = $_REQUEST['id'];
             $name  = $_REQUEST['name'];
             $price = $_REQUEST['price'];
-            $image = $_FILES['img']['name'];
-            $image_tmp = $_FILES['img']['tmp_name'];
-            move_uploaded_file($image_tmp, 'img/'. $image);
-            $category_id = $_REQUEST['categoryName'];
-            $newMobile = new Mobile($name, $price, $image,$category_id);
+            $image = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            move_uploaded_file($image_tmp, 'image/'. $image);
+            $category_id = $_REQUEST['category_id'];
+            $newMobile = new Mobile($name, $price, $image, $category_id);
             $newMobile->setId($id);
             $this->bigs->updateMobile($newMobile);
-            header('location: index.php?page=home');
+            header('location: index.php?page=list');
         }
     }
 
@@ -73,9 +72,8 @@ class ControllerMobile
     {
         if ($_REQUEST['id']){
             $this->bigs->deleteMobile($id);
-
         }
-        header('location: index.php?page=home');
+        header('location: index.php?page=list');
 
     }
 

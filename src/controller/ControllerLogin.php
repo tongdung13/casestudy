@@ -58,7 +58,7 @@ class ControllerLogin
                 $_SESSION['password'] = $pass;
 
            }
-            header('location: index.php?page=home');
+            header('location: index.php?page=list');
 // else {
 //                echo "moi nhap lai";
 //            }

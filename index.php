@@ -1,11 +1,13 @@
 <?php
     use App\controller\ControllerMobile;
     use App\controller\ControllerLogin;
+    use App\controller\CategoryController;
     $load = require __DIR__. "/vendor/autoload.php";
 
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
     $bill = new ControllerMobile();
     $login = new ControllerLogin();
+    $category = new CategoryController();
 
 ?>
 
@@ -35,6 +37,7 @@
 
         case 'list':
             $bill->More();
+            
             break;
         case 'add':
             $bill->add();
@@ -64,6 +67,11 @@
         case 'cart':
             include 'src/view/Cart.php';
             break;
+
+        case 'category':
+            $category->getCreate();
+            break;
+
         default:
           $login->login();
 

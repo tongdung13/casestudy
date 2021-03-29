@@ -25,9 +25,9 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="?page=add">Add New</a>
                             <a class="dropdown-item" href="?page=update">Update</a>
-
                         </div>
                     </li>
+                    
 
                 </ul>
                 <svg width="3em" height="3em" onclick="" viewBox="0 0 16 16" class="bi bi-cart-plus-fill badge-light" fill="currentColor"
@@ -43,6 +43,9 @@
                 </form>
             </div>
         </nav>
+   
+
+
         <div class="container-fixed">
         <div id="carouselExampleSlidesOnly"  class="carousel slide row" data-ride="carousel">
             <div class="carousel-inner col-6">
@@ -92,96 +95,32 @@
             </div>
         </div>
         </div>
-        <div class="card-body">
-            <table class="table">
-                <thead class=" bg-primary">
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Category</th>
-                    <th>Cart</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($big as $key => $row): ?>
-                    <tr>
-                        <td><?php echo ++$key; ?></td>
-                        <td><?php echo $row['name']   ?></td>
-                        <td><?php echo $row['price'] ?></td>
-                        <td>
-                            <img style="width: 100px" src="img/<?php echo $row['img']; ?>">
-                        </td>
-                        <td><?php echo $row['categoryName']  ?></td>
-                        <td>
-                            <a href="?page=cart&id=<?php echo $row['id']?>" class="btn btn-warning btn-sm">Buy</a>
-                        </td>
-                    </tr>
+        <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <?php foreach ($big as $key => $row): ?>
+                    <div class="col-md-3">
+                        <div class="card mb-4">
+                            <img src="img/<?php  echo $row['image'] ?>" style="width: 253px; height: 200px"><br/>
+                            <div>
+                                <p style="margin-left: 15px;"><?php echo $row['name'] ?></p>
+                            </div>
+                            <div >
+                                <a style="margin-left: 15px;" ><?php echo number_format($row['price'], 3) ?></a>
+                                <a style="margin-left: 75px;" href="?page=cart" ><i class="bi bi-cart-check"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16">
+                                <path d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg></i></a>
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
+            </div>
         </div>
     </div>
+    </div>
 </div>
-<a href="?page=login" class="btn btn-primary btn-sm ">Log Out</a>
-<div class="row">
-    <ul class="col-3">
-        <li><a href="/lich-su-mua-hang" title="Lịch sử mua hàng">Lịch sử mua hàng</a></li>
-        <li><a href="/tra-gop" title="Hướng dẫn mua trả góp">Tìm hiểu về mua trả góp</a></li>
-        <li><a href="/bao-hanh" title="Tìm trung tâm bảo hành">Chính sách bảo hành</a></li>
-        <li><a href="/chinh-sach-bao-hanh-san-pham" title="Chính sách đổi trả">Chính sách đổi trả</a></li>
 
-        <li class="showmore"><a href="javascript:ShowMoreFooterSupportLink()" title="Xem thêm">Xem thêm</a></li>
-        <li class="hidden"><a href="/giao-hang" title="Giao hàng &amp; Thanh toán">Giao hàng &amp; Thanh toán</a></li>
-        <li class="hidden"><a href="/huong-dan-mua-hang" title="Hướng dẫn mua online">Hướng dẫn mua online</a></li>
-        <li class="hidden"><a href="/b2b" title="Mua hàng doanh nghiệp">Bán hàng doanh nghiệp</a></li>
-    </ul>
-    <ul class="col-3">
-        <li class="hidden"><a href="/phieu-mua-hang" title="Phiếu mua hàng">Phiếu mua hàng</a></li>
-        <li class="hidden"><a href="//hddt.thegioididong.com" target="_blank" title="In hóa đơn điện tử" rel="nofollow noopener">In hóa đơn điện tử</a></li>
-        <li class="hidden"><a href="/tos" title="Quy chế hoạt động">Quy chế hoạt động</a></li>
-        <li class="hidden"><a href="/noi-quy-cua-hang" title="Nội quy cửa hàng">Nội quy cửa hàng</a></li>
-        <li class="hidden"><a href="/chat-luong-phuc-vu" title="Chất lượng phục vụ">Chất lượng phục vụ</a></li>
-        <li class="hidden"><a href="https://www.thegioididong.com/tin-tuc/can-trong-voi-nhung-sieu-thi-thegioididong-khong-chinh-chu--683321" title="Cảnh báo giả mạo">Cảnh báo giả mạo</a></li>
-        <li class="hidden"><a href="/trao-thuong" title="Thông tin trao thưởng">Thông tin trao thưởng</a></li>
-        <li class="hidden"><a href="/chinh-sach-khui-hop-apple" title="Chính sách khui hộp sản phẩm Apple">Chính sách khui hộp sản phẩm Apple</a></li>
-    </ul>
-    <ul class="col-3">
-        <li><a href="http://mwg.vn" target="_blank" title="Giới thiệu công ty (mwg.vn)" rel="noopener">Giới thiệu công ty <span>(mwg.vn)</span></a></li>
-        <li><a href="//vieclam.thegioididong.com" target="_blank" title="Tuyển dụng" rel="noopener">Tuyển dụng</a></li>
-        <li><a href="/lien-he" title="Gửi góp ý, khiếu nại">Gửi góp ý, khiếu nại</a></li>
-        <li><a href="/he-thong-sieu-thi-the-gioi-di-dong" title="Tìm siêu thị (2.265 shop)">Tìm siêu thị <span>(2.265 shop)</span></a></li>
-        <li>
-            <a class="viewmb" rel="nofollow" href="/?postmanruntime=1&amp;viewtype=desktop&amp;sclient=mobile" title="Xem bản mobile">Xem bản mobile</a>
-        </li>
-    </ul>
-    <ul class="col-3">
-        <li>
-
-            <p>Gọi mua hàng <a href="tel:18001060">1800.1060</a> (7:30 - 22:00)</p>
-            <p>Gọi khiếu nại &nbsp; <a href="tel:18001062">1800.1062</a> (8:00 - 21:30)</p>
-            <p>Gọi bảo hành &nbsp; <a href="tel:18001064">1800.1064</a> (8:00 - 21:00)</p>
-            <p>Kỹ thuật &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="tel:18001763">1800.1763</a> (7:30 - 22:00)</p>
-            <a target="_blank" rel="nofollow noopener" class="bct" href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=20098" aria-label="bộ công thương mwg"><i class="icontgdd-bct"></i></a>
-            <a rel="nofollow noopener" class="bct" href="/tos#giai-quyet-khieu-nai" aria-label="bộ công thương chống hàng giả"><i class="icontgdd-hg"></i></a>
-            <a href="//www.dmca.com/Protection/Status.aspx?ID=5b62e759-2a0c-4d86-b972-af903bfbc89d&amp;refurl=http://www.thegioididong.com/?PostmanRuntime=1&amp;viewtype=desktop" title="DMCA.com Protection Status" class="dmca-badge"> <img style="opacity:0.6;margin: 0px auto -8px;display: block;" src="//images.dmca.com/Badges/dmca-badge-w100-5x1-11.png?ID=5b62e759-2a0c-4d86-b972-af903bfbc89d" alt="DMCA.com Protection Status"></a>
-        </li>
-    </ul>
-    <ul class="colfoot collast">
-        <li>
-            <a target="_blank" href="https://facebook.com/thegioididongcom" class="linkfb" rel="noopener">
-                <i class="icontgdd-share1"></i>3.5tr
-            </a>
-            <a target="_blank" href="https://www.youtube.com/user/TGDDVideoReviews?sub_confirmation=1" class="linkyt" rel="noopener">
-                <i class="icontgdd-share3"></i>763k
-            </a>
-
-
-        </li>
-    </ul>
-</div>
 
 <footer class=" bg-dark text-center text-lg-left">
     <!-- Copyright -->

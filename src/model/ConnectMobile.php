@@ -16,58 +16,53 @@ class ConnectMobile
 
     public function getAll()
     {
-        $sql = "select * from mobile inner join category on mobile.category_id = category.idd";
+        $sql = "SELECT * FROM mobile INNER JOIN category ON mobile.category_id = category.id_category";
         $stmt = $this->data->query($sql);
         return $stmt->fetchAll();
     }
     public function categoryAll()
     {
-        $sql = "select * from category";
+        $sql = "SELECT * FROM category";
         $stmt = $this->data->query($sql);
         return $stmt->fetchAll();
     }
 
     public function addMobile($mobile)
     {
-        $sql = "INSERT INTO mobile (name, price, img,category_id) VALUES (:name,:price,:img,:category_id)";
+        $sql = "INSERT INTO mobile (name, price, image, category_id) VALUES (:name, :price, :image, :category_id)";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':name',        $mobile->getName());
         $stmt->bindParam(':price',       $mobile->getPrice());
-        $stmt->bindParam(':img',         $mobile->getImg());
+        $stmt->bindParam(':image',       $mobile->getImage());
         $stmt->bindParam(':category_id', $mobile->getCategory_id());
         $stmt->execute();
     }
 
     public function getMobileById($id)
     {
-        $sql = "select * from mobile where id =:id";
+        $sql = "SELECT * FROM mobile WHERE id = :id";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch();
-
-
     }
 
 
     public function updateMobile($newMobiles)
     {
-
-        $sql = "UPDATE mobile SET name=:name,price=:price,img=:img,category_id=:category_id WHERE id=:id";
+        $sql = "UPDATE mobile SET name = :name, price = :price, image = :image, category_id = :category_id WHERE id = :id";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':name',        $newMobiles->getName());
         $stmt->bindParam(':price',       $newMobiles->getPrice());
-        $stmt->bindParam(':img',         $newMobiles->getImg());
+        $stmt->bindParam(':image',       $newMobiles->getImage());
         $stmt->bindParam(':category_id', $newMobiles->getCategory_id());
         $stmt->bindParam(':id',          $newMobiles->getId());
         $stmt->execute();
-
-
     }
 
     public function deleteMobile($id)
     {
-        $sql = "DELETE FROM mobile WHERE id =:id";
+        $sql = "DELETE FROM mobile WHERE id = :id";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -75,7 +70,7 @@ class ConnectMobile
 
     public function getSearch($search)
     {
-        $sql = "SELECT * FROM mobile inner join category on mobile.category_id = category.idd WHERE `name` LIKE '$search'";
+        $sql = "SELECT * FROM mobile INNER JOIN category ON mobile.category_id = category.id_category WHERE `name` LIKE '$search'";
         $stmt = $this->data->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();

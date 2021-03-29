@@ -18,15 +18,15 @@ class MobileLoginDb
     {
         $sql = "select * from login";
         $stmt = $this->data->query($sql);
-        $stmt->fetch();
+        return $stmt->fetchAll();
     }
 
     public function inLogin($user)
     {
         $sql = "select username,password from login where name =:name";
         $stmt = $this->data->prepare($sql);
-        $stmt->bindParam(':name',     $user);
+        $stmt->bindParam(':name', $user);
         $stmt->execute();
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 }
