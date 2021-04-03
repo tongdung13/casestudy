@@ -1,13 +1,17 @@
 <?php
+    
+
     use App\controller\ControllerMobile;
     use App\controller\ControllerLogin;
     use App\controller\CategoryController;
+    use App\controller\CartController;
     $load = require __DIR__. "/vendor/autoload.php";
 
     $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
     $bill = new ControllerMobile();
     $login = new ControllerLogin();
     $category = new CategoryController();
+    $cart = new CartController();
 
 ?>
 
@@ -29,7 +33,7 @@
 <body>
 
 <?php
-
+session_start();
     switch ($page) {
         case 'home':
             $bill->index();
@@ -37,8 +41,8 @@
 
         case 'list':
             $bill->More();
-            
             break;
+
         case 'add':
             $bill->add();
             break;
@@ -65,7 +69,12 @@
             break;
 
         case 'cart':
-            include 'src/view/Cart.php';
+            $id = $_REQUEST['id'];
+            $cart->store($id);
+            break;
+
+        case 'cartShow' :
+            $cart->index();
             break;
 
         case 'category':

@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Price</label>
-                    <input type="text" name="price" class="form-control" id="formGroupExampleInput" >
+                    <input type="number" name="price" class="form-control" id="formGroupExampleInput" >
                 </div>
                 <div class="from-group">
                     <label for="formGroupExampleInput">Image</label><br>
@@ -59,7 +59,7 @@
                    <select name="category_id" class="form-control" >
                        <?php foreach ($categories as $category): ?>
                        <option class="form-control" value="<?php echo $category['id_category'];  ?>">
-                           <?php echo $category['categoryName'];  ?>
+                           <?php echo $category['categoryName']; ?>
                        </option>
                        <?php endforeach; ?>
                    </select>
