@@ -1,13 +1,10 @@
 <?php
 
-
 namespace App\controller;
 
-use App\model\LoginDb;
 use App\model\Login;
-use App\model\MobileLogin;
+use App\model\LoginDb;
 use App\model\MobileLoginDb;
-
 
 class ControllerLogin
 {
@@ -17,12 +14,12 @@ class ControllerLogin
     public function __construct()
     {
         $this->logout = new LoginDb();
-        $this->login = new  MobileLoginDb();
+        $this->login = new MobileLoginDb();
     }
 
     public function addLogin()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include 'src/view/addLogin.php';
         } else {
 
@@ -46,27 +43,24 @@ class ControllerLogin
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             include "src/view/Login.php";
         } else {
-            $name = $_REQUEST['username'];
+            $name = $_REQUEST['name'];
             $pass = $_REQUEST['password'];
-            $login =  $this->login->inLogin($name);
+            $login = $this->login->inLogin($name);
 
-            if (!empty($login) && $login['password'] === $pass){
-                $_SESSION['username'] = $name;
+            if (!empty($login) && $login['password'] === $pass) {
+                $_SESSION['name'] = $name;
                 $_SESSION['password'] = $pass;
 
-           }
+            }
             header('location: index.php?page=list');
 // else {
 //                echo "moi nhap lai";
 //            }
         }
 
-
     }
-
-
 
 }

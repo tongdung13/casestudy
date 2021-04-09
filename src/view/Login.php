@@ -58,7 +58,7 @@
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="form">
                                             <label for="">UserName:</label><br>
-                                            <input type="text" name="username" placeholder="username" />
+                                            <input type="text" name="name" placeholder="username" />
                                         </div>
                                         <div class="form">
                                             <label for="">Password:</label><br>

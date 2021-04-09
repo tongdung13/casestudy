@@ -1,13 +1,15 @@
 <?php
-    use App\controller\ControllerMobile;
-    use App\controller\ControllerLogin;
-    use App\controller\CategoryController;
-    $load = require __DIR__. "/vendor/autoload.php";
+session_start();
 
-    $page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
-    $bill = new ControllerMobile();
-    $login = new ControllerLogin();
-    $category = new CategoryController();
+use App\controller\CategoryController;
+use App\controller\ControllerLogin;
+use App\controller\ControllerMobile;
+$load = require __DIR__ . "/vendor/autoload.php";
+
+$page = isset($_REQUEST['page']) ? $_REQUEST['page'] : '';
+$bill = new ControllerMobile();
+$login = new ControllerLogin();
+$category = new CategoryController();
 
 ?>
 
@@ -30,52 +32,52 @@
 
 <?php
 
-    switch ($page) {
-        case 'home':
-            $bill->index();
-            break;
+switch ($page) {
+    case 'home':
+        $bill->index();
+        break;
 
-        case 'list':
-            $bill->More();
-            
-            break;
-        case 'add':
-            $bill->add();
-            break;
+    case 'list':
+        $bill->More();
 
-        case 'update':
-           $bill->update();
-            break;
+        break;
+    case 'add':
+        $bill->add();
+        break;
 
-        case 'delete':
-            $id = $_REQUEST['id'];
-            $bill->delete($id);
-            break;
+    case 'update':
+        $bill->update();
+        break;
 
-        case 'registration':
-            $login->addLogin();
-            break;
+    case 'delete':
+        $id = $_REQUEST['id'];
+        $bill->delete($id);
+        break;
 
-        case 'login':
-            $login->login();
-            break;
+    case 'registration':
+        $login->addLogin();
+        break;
 
-        case 'search':
-            $bill->search();
-            break;
+    case 'login':
+        $login->login();
+        break;
 
-        case 'cart':
-            include 'src/view/Cart.php';
-            break;
+    case 'search':
+        $bill->search();
+        break;
 
-        case 'category':
-            $category->getCreate();
-            break;
+    case 'cart':
+        include 'src/view/Cart.php';
+        break;
 
-        default:
-          $login->login();
+    case 'category':
+        $category->getCreate();
+        break;
 
-    }
+    default:
+        $login->login();
+
+}
 
 ?>
 
