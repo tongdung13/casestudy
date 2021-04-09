@@ -1,9 +1,9 @@
 <?php
 
 namespace App\controller;
+
 use App\model\Category;
 use App\model\CategoryDb;
-
 
 class CategoryController
 {
@@ -28,4 +28,3 @@ class CategoryController
     }
 
 }
-

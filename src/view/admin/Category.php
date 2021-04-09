@@ -8,4 +8,3 @@
         <button type="submit" class="btn btn-outline-primary">add</button>
     </form>
 </div>
-

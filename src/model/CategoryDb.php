@@ -12,14 +12,11 @@ class CategoryDb
         $this->data = $db->connect();
     }
 
-    public function add ($category)
+    public function add($category)
     {
-        
-
         $sql = "INSERT INTO category (categoryName) VALUES (:categoryName)";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':categoryName', $category->getCategoryName());
         $stmt->execute();
     }
 }
-
