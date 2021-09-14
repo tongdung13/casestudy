@@ -23,7 +23,7 @@ class MobileLoginDb
 
     public function inLogin($user)
     {
-        $sql = "select username,password from login where name =:name";
+        $sql = "select name,password from login where name =:name";
         $stmt = $this->data->prepare($sql);
         $stmt->bindParam(':name', $user);
         $stmt->execute();

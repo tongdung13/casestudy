@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <form method="post" enctype="multipart/form-data">
+                                    <form method="post" action="?page=registration" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="">UserName:</label><br>
                                             <input type="text" name="username" placeholder="username" >

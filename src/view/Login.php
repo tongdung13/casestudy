@@ -55,7 +55,7 @@
                                     <h1>Login Page</h1>
                                 </div >
                                 <div class="card-body">
-                                    <form method="post" enctype="multipart/form-data">
+                                    <form method="post" action="?page=login" enctype="multipart/form-data">
                                         <div class="form">
                                             <label for="">UserName:</label><br>
                                             <input type="text" name="name" placeholder="username" />

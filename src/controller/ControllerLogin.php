@@ -31,13 +31,10 @@ class ControllerLogin
             if (isset($name) && isset($password) && isset($enterThePassword)) {
                 if ($name == '' || $password == '' || $enterThePassword == '') {
                     echo "<a href='?page=registration'>moi nhap lai</a>";
-
                 } else {
-
                     header('location: index.php?page=login');
                 }
             }
-
         }
     }
 
@@ -49,18 +46,14 @@ class ControllerLogin
             $name = $_REQUEST['name'];
             $pass = $_REQUEST['password'];
             $login = $this->login->inLogin($name);
-
-            if (!empty($login) && $login['password'] === $pass) {
+            foreach ($login as $item){}
+            if (!empty($login) && $item['password'] === $pass) {
                 $_SESSION['name'] = $name;
                 $_SESSION['password'] = $pass;
-
+                header('location: index.php?page=list');
+            } else {
+                echo "moi nhap lai";
             }
-            header('location: index.php?page=list');
-// else {
-//                echo "moi nhap lai";
-//            }
         }
-
     }
-
 }
